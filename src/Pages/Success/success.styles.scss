@@ -1,0 +1,102 @@
+/* Main Container */
+.success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(
+      135deg,
+      rgba(240, 240, 240, 0.9),
+      rgba(255, 255, 255, 0.9)
+    ); /* Soft gradient background */
+     padding: 2rem;
+  }
+  
+  /* Content Wrapper */
+  .success-wrapper {
+    text-align: center;
+    background: #fff;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 600px;
+    width: 90%;
+  }
+  
+  /* Heading */
+  .success-heading {
+    font-size: 2.5rem; /* Larger, prominent heading */
+    font-weight: 600;
+    color: #333; /* Neutral dark color */
+    margin-bottom: 1rem;
+  }
+  
+  /* Message */
+  .success-message {
+    font-size: 1.2rem;
+    color: #555; /* Muted text color */
+    margin-bottom: 2rem;
+    line-height: 1.8; /* Better readability */
+  }
+  
+  /* Call-to-Actions */
+  .success-cta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Spacing between buttons */
+  }
+  
+  /* Button Styles */
+  .btn-primary,
+  .btn-secondary {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, #28a745, #218838); /* Green gradient */
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-3px); /* Subtle hover effect */
+    background: linear-gradient(135deg, #218838, #28a745); /* Reverse gradient */
+  }
+  
+  .btn-secondary {
+    background: linear-gradient(135deg, #007bff, #0056b3); /* Blue gradient */
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #0056b3, #007bff);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .success-wrapper {
+      padding: 2rem 1.5rem; /* Adjust padding for smaller screens */
+    }
+  
+    .success-heading {
+      font-size: 2rem; /* Smaller heading */
+    }
+  
+    .success-message {
+      font-size: 1rem; /* Adjusted text size */
+    }
+  
+    .btn-primary,
+    .btn-secondary {
+      font-size: 0.9rem; /* Adjust button font size */
+      padding: 0.9rem 1.5rem;
+    }
+  }
+  
