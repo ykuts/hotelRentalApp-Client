@@ -15,9 +15,6 @@ const Success = () => {
           <button className="btn-primary" onClick={() => window.location.href = "/rooms"}>
             Back to Rooms
           </button>
-          {/* <button className="btn-secondary" onClick={() => window.location.href = "/my-bookings"}>
-            View My Bookings
-          </button> */}
         </div>
       </div>
     </div>
