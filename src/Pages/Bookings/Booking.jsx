@@ -1,13 +1,15 @@
+import "./booking.styles.scss";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { createBooking, reset } from "../../features/booking/bookingSlice";
 import { useDispatch, useSelector } from "react-redux";
+
 const Booking = () => {
   const { id: roomId } = useParams();
- const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
- const { isSuccess } = useSelector((state) => state.booking);
+  const { isSuccess } = useSelector((state) => state.booking);
 
   const [room, setRoom] = useState(null);
   const [formData, setFormData] = useState({
@@ -17,7 +19,8 @@ const Booking = () => {
     checkOutDate: "",
   });
 
-  const {name, email, checkInDate, checkOutDate} = formData;
+  const { name, email, checkInDate, checkOutDate } = formData;
+
   useEffect(() => {
     const getRoom = async () => {
       try {
@@ -32,14 +35,14 @@ const Booking = () => {
       }
     };
     getRoom();
-  }, []);
+  }, [roomId]);
 
- useEffect(() => {
+  useEffect(() => {
     if (isSuccess) {
       navigate("/success");
       dispatch(reset());
     }
-  }, [isSuccess]);
+  }, [isSuccess, navigate, dispatch]);
 
   const handleChange = (e) => {
     setFormData((prevState) => ({
@@ -58,14 +61,23 @@ const Booking = () => {
       checkInDate,
       checkOutDate,
     };
-// console.log(dataToSubmit);
+
     dispatch(createBooking(dataToSubmit));
   };
-
 
   return (
     <div>
       <h1 className="heading center">Book Now</h1>
+
+        {/* Display room details if available */}
+        {room && (
+  <div className="room-details">
+    <h2 className="room-title">{room.name}</h2>
+    <p className="room-description">{room.description}</p>
+    <p className="room-price">Price: <span>${room.price}</span></p>
+  </div>
+)}
+
       <div className="form-wrapper">
         <form onSubmit={handleSubmit}>
           <div className="input-group">
@@ -80,9 +92,9 @@ const Booking = () => {
           </div>
 
           <div className="input-group">
-            <label htmlFor="name">Email</label>
+            <label htmlFor="email">Email</label>
             <input
-              type="text"
+              type="email"
               name="email"
               value={email}
               placeholder="Enter your email address"
@@ -91,7 +103,7 @@ const Booking = () => {
           </div>
 
           <div className="input-group">
-            <label htmlFor="name">Check In Date</label>
+            <label htmlFor="date">Check In Date</label>
             <input
               type="date"
               name="checkInDate"
@@ -101,7 +113,7 @@ const Booking = () => {
           </div>
 
           <div className="input-group">
-            <label htmlFor="name">Check Out Date</label>
+            <label htmlFor="date">Check Out Date</label>
             <input
               type="date"
               name="checkOutDate"

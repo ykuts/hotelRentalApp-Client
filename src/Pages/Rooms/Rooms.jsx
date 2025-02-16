@@ -8,7 +8,7 @@ const Rooms = () => {
   useEffect(() => {
     dispatch(getRooms());
     dispatch(reset());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>

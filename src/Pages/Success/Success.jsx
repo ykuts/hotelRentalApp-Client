@@ -1,5 +1,4 @@
 import "./success.styles.scss";
-
 import React from "react";
 
 const Success = () => {
@@ -13,7 +12,7 @@ const Success = () => {
         </p>
         <div className="success-cta">
           <button className="btn-primary" onClick={() => window.location.href = "/rooms"}>
-            Back to Rooms
+            Continue Booking
           </button>
         </div>
       </div>

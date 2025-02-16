@@ -1,16 +1,19 @@
 import "./room.styles.scss";
 import { useEffect, useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { reset, deleteRoom } from "../../features/room/roomSlice";
+import { Link, useParams } from "react-router-dom";
+// import { useDispatch} from "react-redux";
+// import { Link, useParams, useNavigate } from "react-router-dom";
+// import { useDispatch, useSelector } from "react-redux";
+// import { deleteRoom } from "../../features/room/roomSlice";
+// import { reset, deleteRoom } from "../../features/room/roomSlice";
 import Carousel from "../../component/Carousel/Carousel";
 
 const Room = () => {
 
-  const { isSuccess } = useSelector((state) => state.room);
+  // const { isSuccess } = useSelector((state) => state.room);
   const { id } = useParams();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
   const [room, setRoom] = useState(null);
 
   useEffect(() => {
@@ -27,11 +30,11 @@ const Room = () => {
       }
     };
     getRoom();
-  }, []);
+  }, [id]);
 
-  const handleDelete = () => {
-    dispatch(deleteRoom(id));
-  };
+  // const handleDelete = () => {
+  //   dispatch(deleteRoom(id));
+  // };
 
   return (
     <div id="room">
