@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { createBooking, reset } from "../../features/booking/bookingSlice";
 import { useDispatch, useSelector } from "react-redux";
 
+export const API_URL = process.env.REACT_APP_API_URL || "https://hotelrentalappserver-production.up.railway.app";
+
+
 const Booking = () => {
   const { id: roomId } = useParams();
   const dispatch = useDispatch();
@@ -24,7 +27,7 @@ const Booking = () => {
   useEffect(() => {
     const getRoom = async () => {
       try {
-        const res = await fetch(`/api/rooms/${roomId}`);
+        const res = await fetch(`${API_URL}/rooms/${roomId}`);
         const data = await res.json();
         if (!res.ok) {
           return console.log("there was a problem getting room");

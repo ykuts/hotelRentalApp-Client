@@ -1,5 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+export const API_URL = process.env.REACT_APP_API_URL || "https://hotelrentalappserver-production.up.railway.app";
+
+
 const initialState = {
   booking: null,
   isLoading: false,
@@ -12,7 +15,7 @@ export const createBooking = createAsyncThunk(
   "booking/create",
   async (bookingData, thunkApi) => {
     try {
-      const res = await fetch(`/api/bookings`, {
+      const res = await fetch(`${API_URL}/bookings`, {
         headers: {
           "Content-Type": "application/json",
         },
