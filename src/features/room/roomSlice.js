@@ -16,7 +16,7 @@ export const createRoom = createAsyncThunk(
   "room/create",
   async (roomData, thunkApi) => {
     try {
-      const res = await fetch(`${API_URL}/rooms`, {
+      const res = await fetch(`${API_URL}/api/rooms`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -41,7 +41,7 @@ export const createRoom = createAsyncThunk(
 // get all rooms
 export const getRooms = createAsyncThunk("room/getall", async (_, thunkApi) => {
   try {
-    const res = await fetch("/api/rooms");
+    const res = await fetch(`${API_URL}/api/rooms`);
     if (!res.ok) {
       const error = await res.json();
       return thunkApi.rejectWithValue(error);
@@ -61,7 +61,7 @@ export const updateRoom = createAsyncThunk(
   async (roomData, thunkApi) => {
     try {
       const { roomId, ...rest } = roomData;
-      const res = await fetch(`/api/rooms/${roomId}`, {
+      const res = await fetch(`${API_URL}/api/rooms/${roomId}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -85,7 +85,7 @@ export const deleteRoom = createAsyncThunk(
   "room/delete",
   async (roomId, thunkApi) => {
     try {
-      const res = await fetch(`/api/rooms/${roomId}`, {
+      const res = await fetch(`${API_URL}/api/rooms/${roomId}`, {
         method: "DELETE",
       });
       const data = await res.json();
