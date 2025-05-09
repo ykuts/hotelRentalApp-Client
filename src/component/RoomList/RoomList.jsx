@@ -8,7 +8,7 @@ const RoomList = ({ data }) => {
       {data.map((item, index) => {
         return (
           <Link
-            to={`${API_URL}/api/rooms/all/${item._id}`}
+            to={`/rooms/all/${item._id}`}
             key={item._id}
             className="room-unit"
           >
