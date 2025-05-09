@@ -2,23 +2,15 @@ import { useEffect, useState } from "react";
 import "./carousel.styles.scss";
 // import { current } from "@reduxjs/toolkit";
 const Carousel = ({ data }) => {
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevState) => {
-        if (prevState === data.length - 1) {
-          return (prevState = 0);
-        } else {
-          return prevState + 1;
-        }
-      });
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
+    }, 5000);
 
-      return () => {
-        clearInterval(interval);
-      };
-    }, 8000);
-  }, [data.length]);
+      return () => clearInterval(interval);
+  }, [data]);
 
   return (
     <div className="carousel-wrapper">
