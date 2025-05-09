@@ -8,7 +8,7 @@ import { Link, useParams } from "react-router-dom";
 // import { reset, deleteRoom } from "../../features/room/roomSlice";
 import Carousel from "../../component/Carousel/Carousel";
 
-const API_URL = process.env.REACT_APP_API_URL || "https://hotelrentalappserver-production.up.railway.app";
+const API_URL = process.env.REACT_APP_API_URL || "https://hotelrentalappserver.up.railway.app";
 
 
 const Room = () => {
@@ -22,7 +22,7 @@ const Room = () => {
   useEffect(() => {
     const getRoom = async () => {
       try {
-        const res = await fetch(`${API_URL}/rooms/${id}`);
+        const res = await fetch(`${API_URL}/api/rooms/${id}`);
 
         if (res.ok) {
           const data = await res.json();
